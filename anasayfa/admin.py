@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import Etkinlik, Duyuru, FaydaliBilgi, AyasBilgi, ContactMessage
+from .models import AyasTarihi, GezilecekYer, KoyMahalle, GuncelHaber, ContactMessage
 
-admin.site.register(Etkinlik)
-admin.site.register(Duyuru)
-admin.site.register(FaydaliBilgi)
-admin.site.register(AyasBilgi)
+admin.site.register(AyasTarihi)
+admin.site.register(GezilecekYer)
+admin.site.register(KoyMahalle)
+admin.site.register(GuncelHaber)
 admin.site.register(ContactMessage)

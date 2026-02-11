@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Duyurular</title>
+  <title>Köyler ve Mahalleler</title>
   {% load static %}
   <style>
     * {
@@ -54,7 +54,7 @@
     }
 
     /* Modern Header with Gradient */
-    .duyurular-banner {
+    .bilgiler-banner {
       background: linear-gradient(135deg, #374270 0%, #74bdde 100%);
       position: relative;
       padding: 80px 20px 60px;
@@ -62,18 +62,18 @@
       overflow: hidden;
     }
 
-    .duyurular-banner::before {
+    .bilgiler-banner::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="15" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="35" r="1" fill="white" opacity="0.08"/><circle cx="45" cy="65" r="1" fill="white" opacity="0.12"/><circle cx="90" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="15" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="70" cy="45" r="1" fill="white" opacity="0.08"/><circle cx="30" cy="75" r="1" fill="white" opacity="0.12"/><circle cx="85" cy="85" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
       pointer-events: none;
     }
 
-    .duyurular-banner h1 {
+    .bilgiler-banner h1 {
       color: white;
       font-size: clamp(28px, 6vw, 48px);
       font-weight: 700;
@@ -120,8 +120,8 @@
       50% { transform: translateY(-20px); }
     }
 
-    /* Announcements List Section */
-    .duyuru-listesi {
+    /* Information List Section */
+    .bilgiler-listesi {
       max-width: 1200px;
       margin: 0 auto;
       padding: 60px 20px;
@@ -130,7 +130,7 @@
       gap: 30px;
     }
 
-    .duyuru-karti {
+    .bilgi-karti {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 20px;
@@ -142,7 +142,7 @@
       overflow: hidden;
     }
 
-    .duyuru-karti::before {
+    .bilgi-karti::before {
       content: '';
       position: absolute;
       top: 0;
@@ -152,22 +152,22 @@
       background: linear-gradient(135deg, #374270 0%, #74bdde 100%);
     }
 
-    .duyuru-karti:hover {
+    .bilgi-karti:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     }
 
-    .duyuru-content {
+    .bilgi-content {
       display: flex;
       gap: 30px;
       align-items: flex-start;
     }
 
-    .duyuru-metni {
+    .bilgi-metni {
       flex: 1;
     }
 
-    .duyuru-metni h2 {
+    .bilgi-metni h2 {
       font-size: clamp(20px, 4vw, 26px);
       font-weight: 600;
       color: #2d3748;
@@ -175,19 +175,19 @@
       line-height: 1.3;
     }
 
-    .duyuru-metni p {
+    .bilgi-metni p {
       font-size: 16px;
       line-height: 1.7;
       color: #4a5568;
       text-align: justify;
     }
 
-    .duyuru-resmi {
+    .bilgi-resmi {
       flex-shrink: 0;
       position: relative;
     }
 
-    .duyuru-resmi img {
+    .bilgi-resmi img {
       width: 280px;
       height: 180px;
       object-fit: cover;
@@ -196,7 +196,7 @@
       transition: transform 0.3s ease;
     }
 
-    .duyuru-karti:hover .duyuru-resmi img {
+    .bilgi-karti:hover .bilgi-resmi img {
       transform: scale(1.02);
     }
 
@@ -215,7 +215,7 @@
 
     /* Mobile Responsive */
     @media (max-width: 768px) {
-      .duyurular-banner {
+      .bilgiler-banner {
         padding: 60px 20px 40px;
       }
 
@@ -231,43 +231,43 @@
         height: 40px;
       }
 
-      .duyuru-listesi {
+      .bilgiler-listesi {
         padding: 40px 15px;
         gap: 25px;
       }
 
-      .duyuru-karti {
+      .bilgi-karti {
         padding: 25px 20px;
       }
 
-      .duyuru-content {
+      .bilgi-content {
         flex-direction: column;
         gap: 20px;
       }
 
-      .duyuru-resmi {
+      .bilgi-resmi {
         align-self: center;
       }
 
-      .duyuru-resmi img {
+      .bilgi-resmi img {
         width: 100%;
         max-width: 350px;
         height: 200px;
       }
 
-      .duyuru-metni h2 {
+      .bilgi-metni h2 {
         text-align: center;
         margin-bottom: 20px;
       }
     }
 
     @media (max-width: 480px) {
-      .duyuru-karti {
+      .bilgi-karti {
         padding: 20px 15px;
         margin: 0 5px;
       }
 
-      .duyuru-resmi img {
+      .bilgi-resmi img {
         height: 160px;
       }
     }
@@ -278,7 +278,7 @@
     }
 
     /* Loading animation for images */
-    .duyuru-resmi img {
+    .bilgi-resmi img {
       opacity: 0;
       animation: fadeInImage 0.6s ease forwards;
     }
@@ -304,32 +304,32 @@
   </nav>
 
   <!-- Modern Banner Section -->
-  <section class="duyurular-banner">
+  <section class="bilgiler-banner">
     <div class="banner-decoration"></div>
-    <h1>Duyurular</h1>
-    <p class="banner-subtitle">Güncel haberler ve duyurularımız</p>
+    <h1>Köyler ve Mahalleler</h1>
+    <p class="banner-subtitle">Ayaş'ın köyleri ve mahalleleri</p>
   </section>
 
-  <!-- Announcements List Section -->
-  <section class="duyuru-listesi">
-    {% for duyuru in duyurular %}
-      <div class="duyuru-karti">
-        <div class="duyuru-content">
-          <div class="duyuru-metni">
-            <h2>{{ duyuru.baslik }}</h2>
-            <p>{{ duyuru.aciklama }}</p>
+  <!-- Information List Section -->
+  <section class="bilgiler-listesi">
+    {% for bilgi in faydali_bilgiler %}
+      <div class="bilgi-karti">
+        <div class="bilgi-content">
+          <div class="bilgi-metni">
+            <h2>{{ bilgi.baslik }}</h2>
+            <p>{{ bilgi.aciklama }}</p>
           </div>
-          {% if duyuru.resim %}
-            <div class="duyuru-resmi">
-              <img src="{{ duyuru.resim.url }}" alt="{{ duyuru.baslik }}">
+          {% if bilgi.resim %}
+            <div class="bilgi-resmi">
+              <img src="{{ bilgi.resim.url }}" alt="{{ bilgi.baslik }}">
             </div>
           {% endif %}
         </div>
       </div>
     {% empty %}
       <div class="empty-state">
-        <h3>Henüz duyuru eklenmemiş</h3>
-        <p>Yeni duyurular burada görüntülenecektir.</p>
+        <h3>Henüz köy/mahalle eklenmemiş</h3>
+        <p>Köyler ve mahalleler hakkında bilgiler yakında eklenecektir.</p>
       </div>
     {% endfor %}
   </section>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
-from .models import Etkinlik
-from .models import Duyuru, FaydaliBilgi
+from .models import AyasTarihi
+from .models import GezilecekYer, KoyMahalle
 
 
 # Create your views here.
@@ -9,20 +9,26 @@ from .models import Duyuru, FaydaliBilgi
 def anasayfa(request):
     return render(request, 'anasayfa2.html')
 
-def etkinlik(request):
-    etkinlikler = Etkinlik.objects.order_by('-tarih', '-saat')
-    return render(request, 'etkinlik.html', {'etkinlikler': etkinlikler})
+def ayas_tarihi(request):
+    """Ayaş Tarihi sayfası - Ayaş'ın tarihi bilgileri"""
+    tarih_bilgileri = AyasTarihi.objects.order_by('-tarih', '-saat')
+    return render(request, 'ayas_tarihi.html', {'etkinlikler': tarih_bilgileri})
 
-def duyurular(request):
-    return render(request, 'duyurular.html')
+def gezilecek_yerler(request):
+    """Gezilecek Yerler sayfası"""
+    yerler = GezilecekYer.objects.all().order_by('-tarih')
+    return render(request, 'gezilecek_yerler.html', {'duyurular': yerler})
 
-def ayas(request):
-    from .models import AyasBilgi
-    ayas_bilgiler = AyasBilgi.objects.all().order_by('-tarih')
-    return render(request, 'ayas.html', {'ayas_bilgiler': ayas_bilgiler})
+def guncel_haberler(request):
+    """Güncel Haberler sayfası"""
+    from .models import GuncelHaber
+    haberler = GuncelHaber.objects.all().order_by('-tarih')
+    return render(request, 'guncel_haberler.html', {'ayas_bilgiler': haberler})
 
-def faydali_bilgiler(request):
-    return render(request, 'faydali_bilgiler.html')
+def koyler_mahalleler(request):
+    """Köyler ve Mahalleler sayfası"""
+    koyler = KoyMahalle.objects.all().order_by('-tarih')
+    return render(request, 'koyler_mahalleler.html', {'faydali_bilgiler': koyler})
 
 def galeri(request):
     return render(request, 'galeri.html')
@@ -65,18 +71,6 @@ def login_view(request):
         else:
             error = 'Kullanıcı adı veya şifre yanlış.'
     return render(request, 'login.html', {'error': error})
-
-def etkinlik_listesi(request):
-    etkinlikler = Etkinlik.objects.all()
-    return render(request, 'etkinlik.html', {'etkinlikler': etkinlikler})
-
-def duyurular_view(request):
-    duyurular = Duyuru.objects.all().order_by('-tarih')
-    return render(request, 'duyurular.html', {'duyurular': duyurular})
-
-def faydali_bilgiler_view(request):
-    faydali_bilgiler = FaydaliBilgi.objects.all().order_by('-tarih')
-    return render(request, 'faydali_bilgiler.html', {'faydali_bilgiler': faydali_bilgiler})
 
 
 
