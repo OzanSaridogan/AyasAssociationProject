@@ -69,3 +69,17 @@ class KoyMahalle(models.Model):
 
     def __str__(self):
         return self.baslik
+
+class Diger(models.Model):
+    """Diğer - Diğer içerikler ve bilgiler"""
+    baslik = models.CharField("Başlık", max_length=200)
+    aciklama = models.TextField("Açıklama")
+    resim = models.ImageField("Görsel", upload_to='diger/', blank=True, null=True)
+    tarih = models.DateField("Tarih", auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Diğer"
+        verbose_name_plural = "Diğer"
+
+    def __str__(self):
+        return self.baslik

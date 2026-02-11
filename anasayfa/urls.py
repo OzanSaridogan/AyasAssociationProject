@@ -11,6 +11,7 @@ urlpatterns = [
     path('gezilecek-yerler/', views.gezilecek_yerler, name='gezilecek_yerler'),
     path('guncel-haberler/', views.guncel_haberler, name='guncel_haberler'),
     path('koyler-mahalleler/', views.koyler_mahalleler, name='koyler_mahalleler'),
+    path('diger/', views.diger, name='diger'),
     path('galeri/', views.galeri, name='galeri'),
     path('iletisim/', views.iletisim, name='iletisim'),
     path('contact/', views.contact, name='contact'),  # Yeni iletişim sayfası için

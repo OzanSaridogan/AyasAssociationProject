@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
 from .models import AyasTarihi
-from .models import GezilecekYer, KoyMahalle
+from .models import GezilecekYer, KoyMahalle, Diger
 
 
 # Create your views here.
@@ -29,6 +29,11 @@ def koyler_mahalleler(request):
     """Köyler ve Mahalleler sayfası"""
     koyler = KoyMahalle.objects.all().order_by('-tarih')
     return render(request, 'koyler_mahalleler.html', {'faydali_bilgiler': koyler})
+
+def diger(request):
+    """Diğer sayfası"""
+    diger_items = Diger.objects.all().order_by('-tarih')
+    return render(request, 'diger.html', {'diger_items': diger_items})
 
 def galeri(request):
     return render(request, 'galeri.html')
