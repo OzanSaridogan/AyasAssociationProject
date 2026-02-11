@@ -19,7 +19,9 @@ if not SECRET_KEY:
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
-    'ayaswebproject-test.onrender.com',
+    'www.ayasvakfi.com',
+    'ayasvakfi.com',
+    '104.248.219.194',
     '127.0.0.1',
     'localhost'
 ]
@@ -78,7 +80,8 @@ DATABASES = {
 
 # CSRF trusted origins
 CSRF_TRUSTED_ORIGINS = [
-    "https://ayaswebproject-test.onrender.com",
+    "https://www.ayasvakfi.com",
+    "https://ayasvakfi.com",
 ]
 
 
