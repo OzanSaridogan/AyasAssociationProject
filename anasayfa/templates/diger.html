@@ -299,6 +299,69 @@
         opacity: 1;
       }
     }
+
+    /* PDF Section */
+    .pdf-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(102, 126, 234, 0.15);
+    }
+
+    .pdf-preview {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .pdf-preview iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .pdf-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .pdf-download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .pdf-download-btn svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .pdf-preview iframe {
+        height: 350px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pdf-preview iframe {
+        height: 280px;
+      }
+
+      .pdf-download-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 
@@ -337,6 +400,21 @@
             </div>
           {% endif %}
         </div>
+        {% if item.pdf_dosya %}
+          <div class="pdf-section">
+            <div class="pdf-preview">
+              <iframe src="{{ item.pdf_dosya.url }}" title="{{ item.baslik }} PDF"></iframe>
+            </div>
+            <a href="{{ item.pdf_dosya.url }}" download class="pdf-download-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7,10 12,15 17,10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              PDF İndir
+            </a>
+          </div>
+        {% endif %}
       </div>
     {% empty %}
       <div class="empty-state">

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayaş Derneği</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+<body>
+    {% load static %}
+
+<header>
+  <div class="nav-container">
+    <img src="{% static 'images/dernek_logo.jpg' %}" alt="Ayaş Derneği Logo" class="logo">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{% url 'anasayfa' %}">AnaSayfa</a></li>
+        <li><a href="{% url 'etkinlik' %}">Etkinlikler</a></li>
+        <li><a href="{% url 'duyurular' %}">Duyurular</a></li>
+        <li><a href="{% url 'ayas' %}">Ayaş</a></li>
+        <li><a href="{% url 'faydali_bilgiler' %}">Faydalı Bilgiler</a></li>
+        <li><a href="{% url 'galeri' %}">Galeri</a></li>
+        <li><a href="{% url 'iletisim' %}">İletişim</a></li>
+      </ul>
+    </nav>
+    <button class="login-btn">Giriş Yap</button>
+    <script src="{% static 'js/login.js' %}"></script>
+  </div>
+</header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginBtn = document.querySelector('.login-btn');
+            loginBtn.addEventListener('click', function () {
+                window.location.href = "{% url 'login' %}";
+            });
+        });
+    </script>
+
+    <main>
+        <h1>Hakkımızda</h1>
+        <div class="descriptions">
+          <h2>AYAŞ VAKFI (Ankara İli Ayaş İlçesi Kültür, Kalkınma ve Yardımlaşma Vakfı)</h2>
+          <h3>Kuruluş ve Tarihçe</h3>
+          <p>Ankara ili Ayaş İlçesi Kültür, Kalkınma ve Yardımlaşma Vakfı (Ayaş Vakfı), 16 Mart 1993 tarihinde bir grup müteşebbis kurucunun bir araya gelmesiyle hayata geçirilmiştir. Noter huzurunda tasdik edilen Vakıf Senedi'nin ardından, Türk Medeni Kanunu ve 903 sayılı kanun hükümleri çerçevesinde tüzel kişiliğini kazanan vakfımız, bugün 643 üyesiyle faaliyetlerine güçlü bir şekilde devam etmektedir.</p>
+
+          <h3>Kurucularımız ve Yönetim</h3>
+          <p>Vakfımız; İrfan Köksalan, Hüseyin Özbaş, Enver Karakoyunlu, Şükrü Yurdakan, Rifat Mavioğlu, Hüseyin Yaşar, Galip Şen, Ahmet Lütfi Soylu, Şifa Özmen ve Adnan Öcal'ın 50 Milyon TL sermayeli girişimleriyle kurulmuştur.</p>
+          <p>Kuruluşundan bu yana Şükrü Yurdakan, Hayati Gürtan, Sacit Böke, Necdet Erenler, İsmail Başkaraağaç, İsmail Semiz ve Mehmet Savaş başkanlık görevlerini üstlenmiş; 2009 yılından itibaren ise Müşteba Yertutan yönetim kurulu başkanlığı görevini devralmıştır.</p>
+
+          <h3>Amacımız</h3>
+          <p>Vakfımızın temel misyonu; Ayaşlı hemşehrilerimiz arasında maddi ve manevi dayanışmayı tesis etmek, Ayaş ilçe merkezi ve köylerinin ekonomik, sosyal ve kültürel kalkınmasına katkı sunmaktır. Bu kapsamda başarılı öğrencileri ödüllendirmek ve imkânlar dâhilinde üniversite öğrencilerine burs desteği sağlamak öncelikli faaliyetlerimiz arasındadır.</p>
+
+          <h2>AYAŞ-DER (Ayaş İlçesi ve Köyleri Kültür, Kalkınma, Güzelleştirme, Dayanışma ve Yardımlaşma Derneği)</h2>
+          <h3>Kuruluş yapısı</h3>
+          <p>Kısa adı AYAŞ-DER olan derneğimiz, 2006 yılında Ankara Valiliği İl Sivil Toplumla İlişkiler Müdürlüğü onayıyla kurulmuştur. Kuruluşunda Mehmet Savaş, Hayri Sürücü, Raşit Çakıllı, O. Serhat Karabeyoğlu, Orhan Özcan, Rıdvan Öztaş ve Satılmış Yaman'dan oluşan geçici yönetim kurulu görev almıştır. Derneğimiz güncel olarak 168 üyeye sahiptir.</p>
+
+          <h3>Yönetim Süreci</h3>
+          <p>Derneğimizde bugüne kadar Mehmet Savaş ve İsmail Durlu (vekaleten) başkanlık görevini yürütmüş; 2009 yılı itibarıyla bayrağı Müşteba Yertutan devralmıştır.</p>
+
+          <h3>Faaliyet Alanları ve İş Birlikleri</h3>
+          <p>Ayaş-Der'in temel vizyonu, üyeler arası yardımlaşmayı pekiştirmek ve ilçemizin sosyal, kültürel ve ekonomik gelişimini desteklemektir. Derneğimiz, hedeflerine ulaşmak amacıyla Ayaş Vakfı ile stratejik bir ortaklık içerisinde hareket etmektedir. Bu sinerjinin en somut örneği, başarılı üniversite öğrencilerimize yönelik yürütülen ortak burs programlarıdır.</p>
+        </div>
+
+        <div class="hero-image">
+            <img src="{% static 'images/ayas_manzara.jpg' %}" alt="Ayaş Panoramik Görüntü">
+        </div>
+
+    </main>
+</body>
+</html>
