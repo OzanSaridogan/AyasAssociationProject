@@ -129,5 +129,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # File upload settings
-DATA_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100 MB
-FILE_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100 MB
+# Keep request body limit high enough, but force file bodies to temp files quickly
+# so large uploads do not consume too much RAM on small servers.
+DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.getenv("DATA_UPLOAD_MAX_MEMORY_SIZE", "314572800"))  # 300 MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = int(os.getenv("FILE_UPLOAD_MAX_MEMORY_SIZE", "2621440"))  # 2.5 MB
+FILE_UPLOAD_TEMP_DIR = os.getenv("FILE_UPLOAD_TEMP_DIR", "/tmp")
