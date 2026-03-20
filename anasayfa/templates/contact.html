@@ -34,7 +34,7 @@
                     </div>
                     <div class="text">
                         <h3>Email</h3>
-                        <p>info@example.com</p>
+                        <p><a href="mailto:ayas.der@gmail.com">ayas.der@gmail.com</a></p>
                     </div>
                 </div>
 
@@ -48,37 +48,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ✅ Contact Form is now a sibling, not inside ContactInfo -->
-            <div class="contactForm">
-                <form method="post">
-                    {% csrf_token %}
-                    <h2>Mesaj Gönder</h2>
-                    <div class="inputBox">
-                        <label for="name">Ad Soyad</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="inputBox">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="inputBox">
-                        <label for="message">Mesajınızı buraya yazın</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-
-                    <div class="inputBox">
-                        <input type="submit" value="Gönder">
-                    </div>
-                </form>
-                <!-- Go to Home Page Button (inside contactForm, below form) -->
-                <div>
-                    <a href="/" class="btn-home">Ana Sayfaya Dön</a>
-                </div>
-            </div>
-        </div>
     </section>
 
 </body>

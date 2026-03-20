@@ -204,6 +204,16 @@ main h1 {
   line-height: 1.5;
 }
 
+.contact .ContactInfo .box .text a {
+  color: #d8ebff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact .ContactInfo .box .text a:hover {
+  text-decoration: underline;
+}
+
 .contact .ContactInfo .box .text h3 {
   font-weight: 600;
   font-size: 19px;
@@ -223,6 +233,37 @@ main h1 {
   margin-bottom: 18px;
   color: #19385e;
   font-weight: 700;
+}
+
+.contact-panel-text {
+  color: #365a7e;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #1f5f9d, #2f7ec9);
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(47, 126, 201, 0.22);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.contact-action-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
 }
 
 .contactForm .inputBox {
