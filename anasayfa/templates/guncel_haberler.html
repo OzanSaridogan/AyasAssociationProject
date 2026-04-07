@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Güncel Haberler</title>
   {% load static %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -295,8 +298,192 @@
     }
 
     @keyframes fadeInImage {
-      to {
-        opacity: 1;
+      to { opacity: 1; }
+    }
+
+    /* ─────────────────────────────────────────
+       FEATURED CARD  (Kalecik Gezisi & future
+       manual entries that use this layout)
+    ───────────────────────────────────────── */
+
+    /* Navy / Gold design tokens */
+    :root {
+      --navy:       #1a2744;
+      --navy-mid:   #243157;
+      --navy-light: #2f3f6e;
+      --gold:       #c9a227;
+      --gold-light: #e0b93a;
+      --gold-pale:  rgba(201, 162, 39, 0.12);
+    }
+
+    .featured-karti {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;                         /* keeps image inside radius */
+      box-shadow: 0 8px 32px rgba(26, 39, 68, 0.10);
+      border: 1px solid rgba(26, 39, 68, 0.08);
+      transition: box-shadow 0.35s ease, transform 0.35s ease;
+      position: relative;
+      font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    }
+
+    /* Gold accent bar on top */
+    .featured-karti::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 100%);
+      z-index: 2;
+    }
+
+    .featured-karti:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 56px rgba(26, 39, 68, 0.18);
+    }
+
+    /* ── Inner flex layout ── */
+    .featured-icerik {
+      display: flex;
+      min-height: 280px;
+    }
+
+    /* LEFT: image panel – 40% */
+    .featured-resim-panel {
+      flex: 0 0 40%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .featured-resim-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+      /* fade-in reuses existing keyframe */
+      opacity: 0;
+      animation: fadeInImage 0.7s ease 0.1s forwards;
+    }
+
+    .featured-karti:hover .featured-resim-panel img {
+      transform: scale(1.06);
+    }
+
+    /* RIGHT: text panel – 60% */
+    .featured-metin-panel {
+      flex: 1;
+      padding: 32px 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* Category badge above title */
+    .featured-kategori-rozet {
+      display: inline-block;
+      background: var(--gold-pale);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    .featured-baslik {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    /* Info bar: date · location · category */
+    .featured-bilgi-cubugu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .featured-bilgi-cubugu span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy-light);
+      background: rgba(26, 39, 68, 0.06);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    .featured-aciklama {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #4a5568;
+      text-align: justify;
+      margin: 0;
+    }
+
+    /* "Devamını Oku" link */
+    .featured-devami {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 2px;
+      align-self: flex-start;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .featured-devami:hover {
+      color: var(--gold);
+      border-color: var(--gold-light);
+    }
+
+    /* ── Mobile: stack vertically ── */
+    @media (max-width: 768px) {
+      .featured-icerik {
+        flex-direction: column;
+        min-height: unset;
+      }
+
+      .featured-resim-panel {
+        flex: unset;
+        height: 220px;
+      }
+
+      .featured-metin-panel {
+        padding: 24px 20px 22px;
+        gap: 14px;
+      }
+
+      .featured-baslik {
+        text-align: center;
+      }
+
+      .featured-bilgi-cubugu {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .featured-resim-panel {
+        height: 180px;
+      }
+
+      .featured-metin-panel {
+        padding: 20px 16px 18px;
       }
     }
   </style>
@@ -324,26 +511,46 @@
   <!-- Ayaş Information List Section -->
   <section class="ayas-bilgiler-listesi">
 
-    <!-- Kalecik Gezisi - Manuel Giriş -->
-    <div class="ayas-bilgi-karti">
-      <div class="ayas-bilgi-content">
-        <div class="ayas-bilgi-resmi">
-          <img src="{% static 'images/kalecik_gezisi.jpeg' %}" alt="Kalecik Gezisi">
+    <!-- Kalecik Gezisi - Featured Card -->
+    <article class="featured-karti">
+      <div class="featured-icerik">
+
+        <!-- Image: 40% left panel -->
+        <div class="featured-resim-panel">
+          <img src="{% static 'images/kalecik_gezisi.jpeg' %}" alt="Kalecik Gezisi — dernek üyeleri tarihi kalede">
         </div>
-        <div class="ayas-bilgi-metni">
-          <h2>Kalecik'e Unutulmaz Bir Gezi</h2>
-          <p>
-            Derneğimiz üyeleri ve Ayaşlı dostlarımızla birlikte tarihi Kalecik ilçesine keyifli bir gezi düzenledik.
-            Kadim Ankara'nın bereketli bağlarına ev sahipliği yapan Kalecik'te; tarihi kale kalıntılarını, yöreye özgü
-            bağ bahçeleri ve eşsiz manzarayı hep birlikte keşfettik. Gezi boyunca kaynaşan dostluklar ve paylaşılan
-            anılar, bir kez daha hemşehrilerimizi bir araya getirmenin ne denli değerli olduğunu gözler önüne serdi.
-            Böylesi güzel etkinliklerde buluşmak dileğiyle, bir sonraki gezide görüşmek üzere!
+
+        <!-- Text: 60% right panel -->
+        <div class="featured-metin-panel">
+          <span class="featured-kategori-rozet">🏷️ Kültür Turu</span>
+
+          <h2 class="featured-baslik">Kalecik'e Unutulmaz Bir Gezi</h2>
+
+          <!-- Info bar -->
+          <div class="featured-bilgi-cubugu">
+            <span>📅 Nisan 2026</span>
+            <span>📍 Kalecik, Ankara</span>
+          </div>
+
+          <p class="featured-aciklama">
+            Derneğimiz üyeleri ve Ayaşlı dostlarımızla birlikte tarihi Kalecik ilçesine keyifli bir kültür gezisi
+            düzenledik. Kadim Ankara'nın bereketli bağlarına ev sahipliği yapan bu güzel ilçede; asırlık kale
+            kalıntılarını, yöreye özgü bağ bahçelerini ve eşsiz panoramik manzarayı hep birlikte keşfettik.
+            Gezi boyunca pekişen dostluklar ve paylaşılan anılar, hemşehrilerimizi bir araya getirmenin ne denli
+            değerli olduğunu bir kez daha gözler önüne serdi.
           </p>
-          <small>Nisan 2026</small>
+
+          <a href="#" class="featured-devami">
+            Devamını Oku
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
         </div>
+
       </div>
-    </div>
-    <!-- /Kalecik Gezisi -->
+    </article>
+    <!-- /Kalecik Gezisi Featured Card -->
 
     {% for bilgi in ayas_bilgiler %}
       <div class="ayas-bilgi-karti">
