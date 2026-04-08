@@ -5,4 +5,5 @@ git pull
 source venv/bin/activate
 python manage.py makemigrations
 python manage.py migrate
-systemctl restart ayas.service
+sudo killall gunicorn
+gunicorn --bind 0.0.0.0:8000 AyasWebProject.wsgi:application --daemon
