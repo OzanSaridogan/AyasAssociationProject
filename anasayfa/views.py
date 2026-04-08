@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
 from .models import AyasTarihi
-from .models import GezilecekYer, KoyMahalle, Diger
+from .models import GezilecekYer, KoyMahalle, Diger, Poem
 
 
 # Create your views here.
@@ -34,6 +34,11 @@ def diger(request):
     """Diğer sayfası"""
     diger_items = Diger.objects.all().order_by('-tarih')
     return render(request, 'diger.html', {'diger_items': diger_items})
+
+def poems(request):
+    """Şiirler sayfası"""
+    siirler = Poem.objects.all().order_by('-tarih')
+    return render(request, 'poems.html', {'siirler': siirler})
 
 def galeri(request):
     return render(request, 'galeri.html')

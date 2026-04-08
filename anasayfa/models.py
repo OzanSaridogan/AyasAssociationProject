@@ -84,3 +84,18 @@ class Diger(models.Model):
 
     def __str__(self):
         return self.baslik
+
+class Poem(models.Model):
+    """Şiirler - Dernek üyeleri tarafından yazılan şiirler"""
+    baslik = models.CharField("Başlık", max_length=200)
+    yazar = models.CharField("Yazar", max_length=200, blank=True)
+    icerik = models.TextField("Şiir İçeriği")
+    resim = models.ImageField("Görsel", upload_to='poems/', blank=True, null=True)
+    tarih = models.DateField("Tarih", auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Şiir"
+        verbose_name_plural = "Şiirler"
+
+    def __str__(self):
+        return self.baslik
