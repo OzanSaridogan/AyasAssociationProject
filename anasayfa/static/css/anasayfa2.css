@@ -270,36 +270,55 @@ body {
   margin-top: 14px;
 }
 
-.cta-section {
-  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-  color: #ffffff;
+.tanitim-section {
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
   padding: 72px 0;
 }
 
-.cta-content {
-  text-align: center;
+.tanitim-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
-.cta-content p {
-  max-width: 680px;
-  margin: 0 auto 30px;
-  font-size: 20px;
+.tanitim-card {
+  background: var(--surface);
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
 }
 
-.cta-btn {
-  display: inline-block;
-  text-decoration: none;
-  background: #ffffff;
-  color: var(--primary-strong);
+.tanitim-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 12px;
   font-weight: 800;
-  padding: 13px 26px;
-  border-radius: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
-.cta-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+.tanitim-card h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.tanitim-card p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.tanitim-card p + p {
+  margin-top: 12px;
 }
 
 .contact-section {
@@ -363,6 +382,10 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .tanitim-grid {
+    grid-template-columns: 1fr;
+  }
+
   .mission-media {
     height: 340px;
   }
@@ -397,7 +420,11 @@ body {
     font-size: 17px;
   }
 
-  .cta-content p {
-    font-size: 18px;
+  .tanitim-card {
+    padding: 20px;
+  }
+
+  .tanitim-card h3 {
+    font-size: 22px;
   }
 }
