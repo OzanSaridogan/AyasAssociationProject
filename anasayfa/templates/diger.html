@@ -122,106 +122,151 @@
 
     /* Diger List Section */
     .diger-listesi {
-      max-width: 1200px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+      padding: 64px 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 28px;
     }
 
     .diger-karti {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border-radius: calc(14px + 6px);
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(15, 23, 42, 0.1);
       transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
+      animation: revealCard 0.6s ease both;
+      display: flex;
+      flex-direction: column;
     }
 
     .diger-karti::before {
-      content: '';
+      content: 'Diğer Bilgiler';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(135deg, #c2b8b2 0%, #9e8e85 100%);
+      top: 16px;
+      left: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #1d4ed8;
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+      padding: 6px 10px;
+      border-radius: 999px;
+      z-index: 3;
     }
 
     .diger-karti:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 42px rgba(15, 23, 42, 0.16);
     }
 
     .diger-content {
       display: flex;
-      gap: 30px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+      height: 100%;
     }
 
     .diger-metni {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       flex: 1;
+      padding: 6px 6px 8px;
     }
 
     .diger-metni h2 {
-      font-size: clamp(20px, 4vw, 26px);
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 15px;
+      font-size: clamp(19px, 3.3vw, 24px);
+      font-weight: 800;
+      color: #111827;
       line-height: 1.3;
+      margin-top: 8px;
     }
 
     .diger-metni p {
       font-size: 16px;
       line-height: 1.7;
-      color: #4a5568;
-      text-align: justify;
-      margin-bottom: 15px;
+      color: #475569;
+      text-align: left;
     }
 
     .diger-metni small {
-      font-size: 14px;
-      color: #718096;
+      font-size: 13px;
+      color: #64748b;
       font-style: italic;
-      background: rgba(194, 184, 178, 0.2);
-      padding: 5px 12px;
-      border-radius: 15px;
+      background: rgba(148, 163, 184, 0.12);
+      padding: 4px 10px;
+      border-radius: 12px;
       display: inline-block;
+      width: fit-content;
     }
 
     .diger-resmi {
-      flex-shrink: 0;
+      order: -1;
       position: relative;
+      overflow: hidden;
+      border-radius: 16px;
     }
 
     .diger-resmi img {
-      width: 280px;
-      height: 180px;
+      width: 100%;
+      height: 220px;
       object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+      transition: transform 0.4s ease;
     }
 
     .diger-karti:hover .diger-resmi img {
-      transform: scale(1.02);
+      transform: scale(1.045);
+    }
+
+    @keyframes revealCard {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .diger-metni::after {
+      content: '';
+      width: 72px;
+      height: 3px;
+      background: linear-gradient(90deg, #c2b8b2, #9e8e85);
+      border-radius: 999px;
+      margin-top: auto;
     }
 
     /* Empty state */
     .empty-state {
+      grid-column: 1 / -1;
       text-align: center;
-      padding: 80px 20px;
-      color: #718096;
+      padding: 84px 24px;
+      color: #475569;
+      border-radius: calc(14px + 6px);
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     }
 
     .empty-state h3 {
       font-size: 24px;
       margin-bottom: 10px;
-      color: #4a5568;
+      color: #1e293b;
+      font-weight: 800;
+    }
+
+    .empty-state p {
+      font-size: 16px;
     }
 
     /* Mobile Responsive */
@@ -244,42 +289,64 @@
 
       .diger-listesi {
         padding: 40px 15px;
-        gap: 25px;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
 
       .diger-karti {
-        padding: 25px 20px;
-      }
-
-      .diger-content {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .diger-resmi {
-        align-self: center;
+        padding: 14px;
       }
 
       .diger-resmi img {
-        width: 100%;
-        max-width: 350px;
         height: 200px;
       }
 
       .diger-metni h2 {
-        text-align: center;
-        margin-bottom: 20px;
+        font-size: clamp(17px, 3vw, 22px);
+      }
+
+      .diger-metni p {
+        font-size: 15px;
+      }
+
+      .pdf-preview iframe {
+        height: 350px;
       }
     }
 
     @media (max-width: 480px) {
+      .diger-banner {
+        padding: 50px 15px 30px;
+      }
+
+      .diger-listesi {
+        padding: 30px 10px;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+
       .diger-karti {
-        padding: 20px 15px;
-        margin: 0 5px;
+        padding: 12px;
       }
 
       .diger-resmi img {
-        height: 160px;
+        height: 170px;
+      }
+
+      .diger-metni h2 {
+        font-size: clamp(16px, 3vw, 20px);
+      }
+
+      .diger-metni p {
+        font-size: 14px;
+      }
+
+      .diger-metni::after {
+        width: 60px;
+      }
+
+      .pdf-preview iframe {
+        height: 280px;
       }
     }
 
@@ -302,65 +369,52 @@
 
     /* PDF Section */
     .pdf-section {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(194, 184, 178, 0.45);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
     }
 
     .pdf-preview {
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(15, 23, 42, 0.08);
     }
 
     .pdf-preview iframe {
       width: 100%;
       height: 500px;
       border: none;
-      border-radius: 12px;
+      background: #f8fafc;
     }
 
     .pdf-download-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      background: linear-gradient(135deg, #c2b8b2 0%, #9e8e85 100%);
+      background: linear-gradient(135deg, #1f4ed8 0%, #2563eb 100%);
       color: white;
       text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 25px;
+      padding: 10px 20px;
+      border-radius: 20px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 14px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(158, 142, 133, 0.35);
+      box-shadow: 0 4px 12px rgba(31, 78, 216, 0.25);
+      border: 1px solid rgba(31, 78, 216, 0.3);
     }
 
     .pdf-download-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(158, 142, 133, 0.45);
+      box-shadow: 0 6px 18px rgba(31, 78, 216, 0.35);
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
     }
 
     .pdf-download-btn svg {
       flex-shrink: 0;
-    }
-
-    @media (max-width: 768px) {
-      .pdf-preview iframe {
-        height: 350px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .pdf-preview iframe {
-        height: 280px;
-      }
-
-      .pdf-download-btn {
-        padding: 10px 20px;
-        font-size: 14px;
-      }
     }
   </style>
   <link rel="stylesheet" href="{% static 'css/modern-pages.css' %}" />
