@@ -7,12 +7,23 @@
     {% load static %}
     <style>
         body {
+            margin: 0;
+        }
+
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            padding: 40px 16px;
         }
+
         .login-container {
             background: #fff;
             padding: 2rem 2.5rem;
@@ -53,24 +64,35 @@
         .login-container input[type="submit"]:hover {
             background: #b42383;
         }
+
+        @media (max-width: 480px) {
+            .login-container {
+                width: 100%;
+                max-width: 340px;
+                padding: 1.6rem 1.2rem;
+            }
+        }
     </style>
     <link rel="stylesheet" href="{% static 'css/modern-pages.css' %}" />
 </head>
 <body>
-    <div class="login-container">
-        <h2>Giriş Yap</h2>
-        <form method="post">
-            {% csrf_token %}
-            {% if error %}
-                <p style="color:red; text-align:center;">{{ error }}</p>
-            {% endif %}
-            <label for="username">Kullanıcı Adı</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Şifre</label>
-            <input type="password" id="password" name="password" required>
-            <input type="submit" value="Giriş Yap">
-        </form>
-    </div>
+    <div class="login-page">
+        <main class="login-main">
+            <div class="login-container">
+                <h2>Giriş Yap</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {% if error %}
+                        <p style="color:red; text-align:center;">{{ error }}</p>
+                    {% endif %}
+                    <label for="username">Kullanıcı Adı</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Şifre</label>
+                    <input type="password" id="password" name="password" required>
+                    <input type="submit" value="Giriş Yap">
+                </form>
+            </div>
+        </main>
 
         <footer class="site-footer">
             <div class="site-footer-inner">
@@ -92,5 +114,6 @@
             </div>
             <div class="site-footer-note">© 2026 Ayaş Derneği. Tüm hakları saklıdır.</div>
         </footer>
+    </div>
 </body>
 </html>
