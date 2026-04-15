@@ -6,6 +6,10 @@
   <title>Ayaş Tarihi</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  />
   <style>
     * {
       margin: 0;
@@ -13,41 +17,61 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --font-size: 16px;
+      --background: #f5f7fb;
+      --foreground: #0f172a;
+      --card: #ffffff;
+      --muted: #e7ecf5;
+      --muted-foreground: #475569;
+      --accent: #e9ebef;
+      --border: rgba(15, 23, 42, 0.1);
+      --primary: #1f4ed8;
+      --primary-foreground: #ffffff;
+      --radius: 14px;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      font-family: 'Manrope', sans-serif;
+      background:
+        radial-gradient(circle at 5% 0%, #dbe7ff 0%, transparent 35%),
+        radial-gradient(circle at 95% 8%, #dff7ff 0%, transparent 32%),
+        linear-gradient(180deg, #f8fbff 0%, #eef3f9 100%);
+      color: var(--foreground);
       min-height: 100vh;
+      font-size: var(--font-size);
+      line-height: 1.55;
     }
 
     /* Navigation */
     .navigation {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 10;
+      top: 26px;
+      left: 26px;
+      z-index: 40;
     }
 
     .nav-home {
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: white;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px);
+      color: #f8fafc;
       text-decoration: none;
-      padding: 12px 20px;
+      padding: 11px 19px;
       border-radius: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-weight: 700;
       font-size: 14px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.2);
     }
 
     .nav-home:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.24);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.26);
     }
 
     .nav-home svg {
@@ -56,11 +80,14 @@
 
     /* Modern Header with Gradient */
     .etkinlikler-banner {
-      background: linear-gradient(135deg, #374270 0%, #74bdde 100%);
+      background: linear-gradient(128deg, #0f172a 0%, #1e3a8a 45%, #0ea5e9 100%);
       position: relative;
-      padding: 80px 20px 60px;
+      padding: 90px 20px 70px;
       text-align: center;
       overflow: hidden;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      margin: 0 12px;
     }
 
     .etkinlikler-banner::before {
@@ -70,26 +97,44 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.08"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.12"/><circle cx="90" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.16) 0, transparent 34%),
+        radial-gradient(circle at 78% 20%, rgba(255, 255, 255, 0.18) 0, transparent 28%),
+        linear-gradient(160deg, transparent 0%, rgba(255, 255, 255, 0.06) 100%);
+      pointer-events: none;
+    }
+
+    .etkinlikler-banner::after {
+      content: '';
+      position: absolute;
+      width: 540px;
+      height: 540px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+      bottom: -360px;
+      left: 50%;
+      transform: translateX(-50%);
       pointer-events: none;
     }
 
     .etkinlikler-banner h1 {
-      color: white;
+      color: #ffffff;
       font-size: clamp(28px, 6vw, 48px);
-      font-weight: 700;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-shadow: 0 8px 24px rgba(15, 23, 42, 0.42);
       position: relative;
       z-index: 1;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .banner-subtitle {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.92);
       font-size: clamp(14px, 3vw, 18px);
-      font-weight: 400;
+      font-weight: 500;
       position: relative;
       z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
     }
 
     /* Decorative elements */
@@ -97,7 +142,7 @@
       position: absolute;
       width: 120px;
       height: 120px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.18);
       border-radius: 50%;
       top: 20px;
       right: 20px;
@@ -109,7 +154,7 @@
       position: absolute;
       width: 60px;
       height: 60px;
-      border: 2px solid rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.24);
       border-radius: 50%;
       top: 50%;
       left: 50%;
@@ -123,99 +168,152 @@
 
     /* Events List Section */
     .etkinlikler-listesi {
-      max-width: 1200px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+      padding: 64px 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 28px;
     }
 
     .etkinlik-karti {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+      border: 1px solid var(--border);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      animation: revealCard 0.6s ease both;
     }
 
     .etkinlik-karti::before {
-      content: '';
+      content: 'Ayaş Tarihi';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(135deg, #374270 0%, #74bdde 100%);
+      top: 16px;
+      left: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #1d4ed8;
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+      padding: 6px 10px;
+      border-radius: 999px;
+      z-index: 3;
     }
 
     .etkinlik-karti:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 42px rgba(15, 23, 42, 0.16);
     }
 
     .etkinlik-content {
       display: flex;
-      gap: 30px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+      height: 100%;
     }
 
     .etkinlik-metni {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       flex: 1;
+      padding: 6px 6px 8px;
     }
 
     .etkinlik-metni h2 {
-      font-size: clamp(20px, 4vw, 26px);
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 15px;
+      font-size: clamp(19px, 3.3vw, 24px);
+      font-weight: 800;
+      color: #111827;
       line-height: 1.3;
+      margin-top: 8px;
     }
 
     .etkinlik-metni p {
       font-size: 16px;
       line-height: 1.7;
-      color: #4a5568;
-      text-align: justify;
+      color: var(--muted-foreground);
+      text-align: left;
     }
 
     .etkinlik-resmi {
-      flex-shrink: 0;
+      order: -1;
       position: relative;
+      overflow: hidden;
+      border-radius: calc(var(--radius) + 2px);
     }
 
     .etkinlik-resmi img {
-      width: 280px;
-      height: 180px;
+      width: 100%;
+      height: 220px;
       object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      border-radius: calc(var(--radius) + 2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+      transition: transform 0.4s ease;
     }
 
     .etkinlik-karti:hover .etkinlik-resmi img {
-      transform: scale(1.02);
+      transform: scale(1.045);
     }
 
     /* Empty state */
     .empty-state {
+      grid-column: 1 / -1;
       text-align: center;
-      padding: 80px 20px;
-      color: #718096;
+      padding: 84px 24px;
+      color: var(--muted-foreground);
+      border-radius: calc(var(--radius) + 6px);
+      background: var(--card);
+      border: 1px dashed #cbd5e1;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     }
 
     .empty-state h3 {
       font-size: 24px;
       margin-bottom: 10px;
-      color: #4a5568;
+      color: #1e293b;
+      font-weight: 800;
+    }
+
+    .empty-state p {
+      font-size: 16px;
+    }
+
+    .etkinlik-metni::after {
+      content: '';
+      width: 72px;
+      height: 3px;
+      background: linear-gradient(90deg, #1f4ed8, #38bdf8);
+      border-radius: 999px;
+      margin-top: auto;
+    }
+
+    @keyframes revealCard {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Mobile Responsive */
     @media (max-width: 768px) {
+      .navigation {
+        top: 14px;
+        left: 14px;
+      }
+
+      .etkinlikler-banner {
+        margin: 0;
+        border-radius: 0;
+      }
+
       .etkinlikler-banner {
         padding: 60px 20px 40px;
       }
@@ -233,17 +331,16 @@
       }
 
       .etkinlikler-listesi {
-        padding: 40px 15px;
-        gap: 25px;
+        padding: 38px 15px 56px;
+        gap: 20px;
       }
 
       .etkinlik-karti {
-        padding: 25px 20px;
+        padding: 14px;
       }
 
       .etkinlik-content {
-        flex-direction: column;
-        gap: 20px;
+        gap: 14px;
       }
 
       .etkinlik-resmi {
@@ -252,24 +349,32 @@
 
       .etkinlik-resmi img {
         width: 100%;
-        max-width: 350px;
-        height: 200px;
+        max-width: 100%;
+        height: 190px;
       }
 
       .etkinlik-metni h2 {
-        text-align: center;
-        margin-bottom: 20px;
+        margin-top: 0;
       }
     }
 
     @media (max-width: 480px) {
+      .nav-home {
+        padding: 9px 15px;
+        font-size: 13px;
+      }
+
       .etkinlik-karti {
-        padding: 20px 15px;
-        margin: 0 5px;
+        padding: 12px;
+        margin: 0;
       }
 
       .etkinlik-resmi img {
         height: 160px;
+      }
+
+      .etkinlik-metni p {
+        font-size: 15px;
       }
     }
 
