@@ -120,97 +120,140 @@
       50% { transform: translateY(-20px); }
     }
 
-    /* Announcements List Section */
+    /* Places List Section */
     .duyuru-listesi {
-      max-width: 1200px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+      padding: 64px 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 28px;
     }
 
     .duyuru-karti {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
       border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(15, 23, 42, 0.1);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      animation: revealCard 0.6s ease both;
     }
 
     .duyuru-karti::before {
-      content: '';
+      content: 'Gezilecek Yerler';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(135deg, #374270 0%, #74bdde 100%);
+      top: 16px;
+      left: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #1d4ed8;
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+      padding: 6px 10px;
+      border-radius: 999px;
+      z-index: 3;
     }
 
     .duyuru-karti:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 42px rgba(0, 0, 0, 0.16);
     }
 
     .duyuru-content {
       display: flex;
-      gap: 30px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+      height: 100%;
     }
 
     .duyuru-metni {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       flex: 1;
+      padding: 6px 6px 8px;
     }
 
     .duyuru-metni h2 {
-      font-size: clamp(20px, 4vw, 26px);
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 15px;
+      font-size: clamp(19px, 3.3vw, 24px);
+      font-weight: 800;
+      color: #111827;
       line-height: 1.3;
+      margin-top: 8px;
     }
 
     .duyuru-metni p {
       font-size: 16px;
       line-height: 1.7;
-      color: #4a5568;
-      text-align: justify;
+      color: #475569;
+      text-align: left;
     }
 
     .duyuru-resmi {
-      flex-shrink: 0;
+      order: -1;
       position: relative;
+      overflow: hidden;
+      border-radius: 16px;
     }
 
     .duyuru-resmi img {
-      width: 280px;
-      height: 180px;
+      width: 100%;
+      height: 220px;
       object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+      transition: transform 0.4s ease;
     }
 
     .duyuru-karti:hover .duyuru-resmi img {
-      transform: scale(1.02);
+      transform: scale(1.045);
+    }
+
+    @keyframes revealCard {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .duyuru-metni::after {
+      content: '';
+      width: 72px;
+      height: 3px;
+      background: linear-gradient(90deg, #374270, #74bdde);
+      border-radius: 999px;
+      margin-top: auto;
     }
 
     /* Empty state */
     .empty-state {
+      grid-column: 1 / -1;
       text-align: center;
-      padding: 80px 20px;
-      color: #718096;
+      padding: 84px 24px;
+      color: #475569;
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     }
 
     .empty-state h3 {
       font-size: 24px;
       margin-bottom: 10px;
-      color: #4a5568;
+      color: #1e293b;
+      font-weight: 800;
+    }
+
+    .empty-state p {
+      font-size: 16px;
     }
 
     /* Mobile Responsive */
@@ -233,42 +276,56 @@
 
       .duyuru-listesi {
         padding: 40px 15px;
-        gap: 25px;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
 
       .duyuru-karti {
-        padding: 25px 20px;
-      }
-
-      .duyuru-content {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .duyuru-resmi {
-        align-self: center;
+        padding: 14px;
       }
 
       .duyuru-resmi img {
-        width: 100%;
-        max-width: 350px;
         height: 200px;
       }
 
       .duyuru-metni h2 {
-        text-align: center;
-        margin-bottom: 20px;
+        font-size: clamp(17px, 3vw, 22px);
+      }
+
+      .duyuru-metni p {
+        font-size: 15px;
       }
     }
 
     @media (max-width: 480px) {
+      .duyurular-banner {
+        padding: 50px 15px 30px;
+      }
+
+      .duyuru-listesi {
+        padding: 30px 10px;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+
       .duyuru-karti {
-        padding: 20px 15px;
-        margin: 0 5px;
+        padding: 12px;
       }
 
       .duyuru-resmi img {
-        height: 160px;
+        height: 170px;
+      }
+
+      .duyuru-metni h2 {
+        font-size: clamp(16px, 3vw, 20px);
+      }
+
+      .duyuru-metni p {
+        font-size: 14px;
+      }
+
+      .duyuru-metni::after {
+        width: 60px;
       }
     }
 
