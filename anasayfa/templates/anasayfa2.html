@@ -1,31 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AnaSayfa</title>
+    <title>Ayaş Derneği | Ana Sayfa</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <!-- Google Fonts - Spartan -->
+    <link rel="stylesheet" href="{% static 'css/anasayfa2.css' %}" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
 
   <body>
-    <header
-      class="hero-section"
-      style="background-image: url('{% static 'images/ayas_manzara.jpg' %}')"
-    >
-      <nav class="navbar">
-        <img
-          src="{% static 'images/dernek_logo.jpg' %}"
-          alt="logo"
-          class="logo"
-        />
+    <header class="hero-section">
+      <div
+        class="hero-media"
+        style="background-image: url('{% static 'images/ayas_manzara.jpg' %}')"
+      ></div>
+      <div class="hero-overlay"></div>
+
+      <nav class="navbar" aria-label="Ana navigasyon">
+        <a href="{% url 'anasayfa' %}" class="brand" aria-label="Ayaş Derneği ana sayfa">
+          <img
+            src="{% static 'images/dernek_logo.jpg' %}"
+            alt="Ayaş Derneği logosu"
+            class="logo"
+          />
+          <span class="brand-text">Ayaş Derneği</span>
+        </a>
+
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          Menü
+        </button>
+
         <ul class="nav-links" id="navLinks">
-          <li><a href="{% url 'anasayfa' %}">AnaSayfa</a></li>
+          <li><a class="active" href="{% url 'anasayfa' %}">Ana Sayfa</a></li>
           <li><a href="{% url 'ayas_tarihi' %}">Ayaş Tarihi</a></li>
           <li><a href="{% url 'gezilecek_yerler' %}">Gezilecek Yerler</a></li>
           <li><a href="{% url 'guncel_haberler' %}">Güncel Haberler</a></li>
@@ -34,92 +49,133 @@
           <li><a href="{% url 'diger' %}">Diğer</a></li>
           <li><a href="{% url 'iletisim' %}">İletişim</a></li>
         </ul>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
-          ☰
-        </button>
+
         <button class="login-btn" id="loginBtn">Giriş Yap</button>
       </nav>
 
-      <div class="hero-text">
-        <h1>MİSYONUMUZ</h1>
+      <div class="hero-content">
+        <h1>Ayaş Derneği'ne Hoş Geldiniz</h1>
         <p>
-          Ayaş Derneği, kültürel mirasımızı yaşatmak, hemşehrilerimiz arasında
-          dayanışmayı artırmak ve Ayaş'ın tarihi değerlerini tanıtmak amacıyla
-          faaliyet göstermektedir. Etkinliklerimiz ve duyurularımızla sizleri
-          bir araya getirmeyi hedefliyoruz.
+          Aynı memleketten gelen insanları bir araya getiriyor, kültürel bağlarımızı
+          güçlendiriyor ve dayanışmamızı büyütüyoruz.
         </p>
       </div>
     </header>
 
-    <section class="hakkında">
-      <div class="container">
-        <h2>Hakkımızda</h2>
-        <h3>AYAŞ VAKFI (Ankara İli Ayaş İlçesi Kültür, Kalkınma ve Yardımlaşma Vakfı)</h3>
-        <h4>Kuruluş ve Tarihçe</h4>
-        <p>Ankara ili Ayaş İlçesi Kültür, Kalkınma ve Yardımlaşma Vakfı (Ayaş Vakfı), 16 Mart 1993 tarihinde bir grup müteşebbis kurucunun bir araya gelmesiyle hayata geçirilmiştir. Noter huzurunda tasdik edilen Vakıf Senedi'nin ardından, Türk Medeni Kanunu ve 903 sayılı kanun hükümleri çerçevesinde tüzel kişiliğini kazanan vakfımız, bugün 643 üyesiyle faaliyetlerine güçlü bir şekilde devam etmektedir.</p>
+    <main>
+      <section class="about-section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Hakkımızda</h2>
+            <p>
+              Ayaş Derneği, Ayaş kökenli hemşehrilerimizi aynı çatı altında buluşturmak,
+              ortak kültürümüzü yaşatmak ve gelecek kuşaklara güçlü bir topluluk ruhu bırakmak
+              için faaliyet gösteren bir sivil toplum kuruluşudur.
+            </p>
+          </div>
 
-        <h4>Kurucularımız ve Yönetim</h4>
-        <p>Vakfımız; İrfan Köksalan, Hüseyin Özbaş, Enver Karakoyunlu, Şükrü Yurdakan, Rifat Mavioğlu, Hüseyin Yaşar, Galip Şen, Ahmet Lütfi Soylu, Şifa Özmen ve Adnan Öcal'ın 50 Milyon TL sermayeli girişimleriyle kurulmuştur.</p>
-        <p>Kuruluşundan bu yana Şükrü Yurdakan, Hayati Gürtan, Sacit Böke, Necdet Erenler, İsmail Başkaraağaç, İsmail Semiz ve Mehmet Savaş başkanlık görevlerini üstlenmiş; 2009 yılından itibaren ise Müşteba Yertutan yönetim kurulu başkanlığı görevini devralmıştır.</p>
+          <div class="features-grid">
+            <article class="feature-card">
+              <span class="feature-badge blue">T</span>
+              <h3>Topluluk</h3>
+              <p>Ayaşlıları buluşturan güçlü bir dayanışma ağı oluşturuyoruz.</p>
+            </article>
 
-        <h4>Amacımız</h4>
-        <p>Vakfımızın temel misyonu; Ayaşlı hemşehrilerimiz arasında maddi ve manevi dayanışmayı tesis etmek, Ayaş ilçe merkezi ve köylerinin ekonomik, sosyal ve kültürel kalkınmasına katkı sunmaktır. Bu kapsamda başarılı öğrencileri ödüllendirmek ve imkânlar dâhilinde üniversite öğrencilerine burs desteği sağlamak öncelikli faaliyetlerimiz arasındadır.</p>
+            <article class="feature-card">
+              <span class="feature-badge red">D</span>
+              <h3>Dayanışma</h3>
+              <p>Birlikte üretmek, birlikte destek olmak için ortak projeler yürütüyoruz.</p>
+            </article>
 
-        <h3>AYAŞ-DER (Ayaş İlçesi ve Köyleri Kültür, Kalkınma, Güzelleştirme, Dayanışma ve Yardımlaşma Derneği)</h3>
-        <h4>Kuruluş yapısı</h4>
-        <p>Kısa adı AYAŞ-DER olan derneğimiz, 2006 yılında Ankara Valiliği İl Sivil Toplumla İlişkiler Müdürlüğü onayıyla kurulmuştur. Kuruluşunda Mehmet Savaş, Hayri Sürücü, Raşit Çakıllı, O. Serhat Karabeyoğlu, Orhan Özcan, Rıdvan Öztaş ve Satılmış Yaman'dan oluşan geçici yönetim kurulu görev almıştır. Derneğimiz güncel olarak 168 üyeye sahiptir.</p>
+            <article class="feature-card">
+              <span class="feature-badge green">E</span>
+              <h3>Etkinlikler</h3>
+              <p>Kültürel programlar ve buluşmalarla bağlarımızı canlı tutuyoruz.</p>
+            </article>
 
-        <h4>Yönetim Süreci</h4>
-        <p>Derneğimizde bugüne kadar Mehmet Savaş ve İsmail Durlu (vekaleten) başkanlık görevini yürütmüş; 2009 yılı itibarıyla bayrağı Müşteba Yertutan devralmıştır.</p>
+            <article class="feature-card">
+              <span class="feature-badge violet">M</span>
+              <h3>Misyon</h3>
+              <p>Değerlerimizi koruyarak gelecek nesillere güçlü bir miras bırakıyoruz.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-        <h4>Faaliyet Alanları ve İş Birlikleri</h4>
-        <p>Ayaş-Der'in temel vizyonu, üyeler arası yardımlaşmayı pekiştirmek ve ilçemizin sosyal, kültürel ve ekonomik gelişimini desteklemektir. Derneğimiz, hedeflerine ulaşmak amacıyla Ayaş Vakfı ile stratejik bir ortaklık içerisinde hareket etmektedir. Bu sinerjinin en somut örneği, başarılı üniversite öğrencilerimize yönelik yürütülen ortak burs programlarıdır.</p>
-      </div>
-    </section>
+      <section class="mission-section">
+        <div class="container mission-grid">
+          <div class="mission-media-wrap">
+            <img
+              src="{% static 'images/ayas_manzara.jpg' %}"
+              alt="Ayaş topluluğundan bir kare"
+              class="mission-media"
+            />
+          </div>
 
-    <section class="iletisim">
-      <div class="iletisim-content">
-        <h2>İletişim</h2>
-        <p>📧 ayas.der@gmail.com</p>
-        <p>📍 Menekşe 2 Sokak No:18/10 Kızılay, Ankara, Türkiye</p>
-      </div>
-    </section>
+          <div class="mission-content">
+            <h2>Misyonumuz</h2>
+            <p>
+              Ayaş kökenli vatandaşlarımızı bir araya getirerek sosyal ve kültürel bağlarımızı
+              güçlendirmek, yardımlaşma kültürünü sürekli ve sürdürülebilir kılmak temel hedefimizdir.
+            </p>
+            <p>
+              Gençlerimize köklerimizi tanıtan, geleneksel değerlerimizi günümüzün ihtiyaçlarıyla
+              buluşturan çalışmalarla kalıcı bir etki oluşturmayı amaçlıyoruz.
+            </p>
+            <p>
+              Eğitim, kültür ve sosyal yaşam alanlarında toplumsal gelişime katkı sunacak faaliyetleri
+              düzenli olarak hayata geçiriyoruz.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container cta-content">
+          <h2>Bize Katılın</h2>
+          <p>Ayaş Derneği ailesine katılarak ortak kültürümüzün aktif bir parçası olun.</p>
+          <a href="{% url 'iletisim' %}" class="cta-btn">İletişime Geç</a>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <div class="container contact-content">
+          <h2>İletişim</h2>
+          <p>E-posta: ayas.der@gmail.com</p>
+          <p>Adres: Menekşe 2 Sokak No:18/10 Kızılay, Ankara, Türkiye</p>
+        </div>
+      </section>
+    </main>
 
     <script>
-      // Mobile menu toggle functionality
       document.addEventListener("DOMContentLoaded", function () {
         const mobileMenuToggle = document.getElementById("mobileMenuToggle");
         const navLinks = document.getElementById("navLinks");
         const loginBtn = document.getElementById("loginBtn");
 
-        // Toggle mobile menu
         mobileMenuToggle.addEventListener("click", function () {
           navLinks.classList.toggle("active");
-          // Change hamburger to X when menu is open
-          if (navLinks.classList.contains("active")) {
-            mobileMenuToggle.innerHTML = "✕";
-          } else {
-            mobileMenuToggle.innerHTML = "☰";
-          }
+          const expanded = navLinks.classList.contains("active");
+          mobileMenuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+          mobileMenuToggle.textContent = expanded ? "Kapat" : "Menü";
         });
 
-        // Close menu when clicking on a navigation link
         navLinks.addEventListener("click", function (e) {
           if (e.target.tagName === "A") {
             navLinks.classList.remove("active");
-            mobileMenuToggle.innerHTML = "☰";
+            mobileMenuToggle.setAttribute("aria-expanded", "false");
+            mobileMenuToggle.textContent = "Menü";
           }
         });
 
-        // Close menu when clicking outside of menu area
         document.addEventListener("click", function (e) {
           if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove("active");
-            mobileMenuToggle.innerHTML = "☰";
+            mobileMenuToggle.setAttribute("aria-expanded", "false");
+            mobileMenuToggle.textContent = "Menü";
           }
         });
 
-        // Login button functionality
         loginBtn.addEventListener("click", function () {
           window.location.href = "{% url 'login' %}";
         });
